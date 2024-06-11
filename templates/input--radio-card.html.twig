@@ -1,0 +1,18 @@
+{# templates/input--radio-card.html.twig #}
+<div class="form-item form-item--radio-card">
+  <input type="radio" 
+         name="{{ name }}" 
+         value="{{ value }}" 
+         id="{{ id }}"
+         {% if attributes is defined %}
+           {% for attribute, value in attributes %}
+             {{ attribute }}="{{ value }}"
+           {% endfor %}
+         {% endif %}
+  />
+  <label for="{{ id }}" class="radio-card">
+    <div class="radio-card-content">
+      {{ title }}
+    </div>
+  </label>
+</div>

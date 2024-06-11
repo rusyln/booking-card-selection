@@ -1,0 +1,5 @@
+booking_card_selection:
+  version: 1.x
+  css:
+    theme:
+      css/booking_card_selection.css: {}

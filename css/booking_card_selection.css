@@ -1,0 +1,29 @@
+/* Example CSS for radio card styling */
+.form-item--radio-card {
+  display: inline-block;
+  margin: 0.5em;
+}
+
+.radio-card {
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1em;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.radio-card:hover {
+  border-color: #007bff;
+  background-color: #f1f1f1;
+}
+
+.radio-card-content {
+  pointer-events: none; /* Disable pointer events on content to prevent interfering with input */
+}
+
+input[type="radio"]:checked + .radio-card {
+  border-color: #007bff;
+  background-color: #e9ecef;
+}
