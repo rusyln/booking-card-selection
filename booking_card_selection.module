@@ -3,12 +3,21 @@
 /**
  * Implements hook_theme().
  */
-function booking_card_selection_theme() {
+function booking_card_selection_theme($existing, $type, $theme, $path) {
+  $extension_path_resolver = \Drupal::service('extension.path.resolver');
+  $module_path = $extension_path_resolver->getPath('module', 'booking_card_selection');
+
   return [
     'input__radio_card' => [
-      'variables' => [
-        'element' => NULL,
+      'variables' => ['user' => NULL],
+      'template' => 'input--radio-card',
+      'path' => $module_path . '/templates',
+      '#attached' => [
+        'library' => [
+          'booking_card_selection/booking_card_selection',
+        ],
       ],
+
     ],
   ];
 }
