@@ -34,20 +34,6 @@ function booking_card_selection_preprocess_input__radio_card(&$variables) {
   $variables['name'] = $element['#name'];
   $variables['id'] = $element['#id'];
 }
-
-
-
-/**
- * Implements hook_form_alter().
- */
-function constellator_form_alter(&$form, FormStateInterface $form_state, $form_id) {
-
-  // Adding custom validation for the welcome page type field.
-  if ($form_id == 'node_article_edit_form' || $form_id == 'node_article_form') {
-    // Do some stuff.
-  }
-}
-
 /**
  * Implements hook_form_alter().
  */
