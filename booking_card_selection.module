@@ -1,6 +1,19 @@
 <?php
 
 /**
+ * Implements hook_theme().
+ */
+function booking_card_selection_theme() {
+  return [
+    'input__radio_card' => [
+      'variables' => [
+        'element' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
  * Implements hook_preprocess_HOOK() for input__radio_card theme hook.
  */
 function booking_card_selection_preprocess_input__radio_card(&$variables) {
@@ -13,6 +26,7 @@ function booking_card_selection_preprocess_input__radio_card(&$variables) {
   $variables['name'] = $element['#name'];
   $variables['id'] = $element['#id'];
 }
+
 /**
  * Implements hook_form_alter() to modify node forms.
  */
