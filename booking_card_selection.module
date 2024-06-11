@@ -1,7 +1,5 @@
 <?php
 
-
-
 /**
  * Implements hook_preprocess_HOOK() for input__radio_card theme hook.
  */
@@ -15,22 +13,24 @@ function booking_card_selection_preprocess_input__radio_card(&$variables) {
   $variables['name'] = $element['#name'];
   $variables['id'] = $element['#id'];
 }
-
-
-
 /**
- * Implements hook_preprocess_HOOK() for node forms.
+ * Implements hook_form_alter() to modify node forms.
  */
 function booking_card_selection_form_node_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
-  // Check if the form is for the 'booking' content type.
-  if ($form['#node']->getType() == 'booking') {
-    // Add the custom CSS library.
-    $form['#attached']['library'][] = 'booking_card_selection/booking_card_selection';
+  // Check if the form is for the 'node' entity type and if the node is available.
+  if (isset($form['#node']) && $form['#node'] instanceof \Drupal\node\NodeInterface) {
+    $node = $form['#node'];
     
-    // Alter the radio buttons to use the custom theme hook.
-    foreach ($form as $key => &$element) {
-      if (is_array($element) && isset($element['#type']) && $element['#type'] === 'radios') {
-        $element['#theme'] = 'input__radio_card';
+    // Check if the node type is 'booking'.
+    if ($node->getType() == 'booking') {
+      // Add the custom CSS library.
+      $form['#attached']['library'][] = 'booking_card_selection/booking_card_selection';
+      
+      // Alter the radio buttons to use the custom theme hook.
+      foreach ($form as $key => &$element) {
+        if (is_array($element) && isset($element['#type']) && $element['#type'] === 'radios') {
+          $element['#theme'] = 'input__radio_card';
+        }
       }
     }
   }
